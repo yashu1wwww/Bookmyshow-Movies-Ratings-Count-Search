@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmyshow Movies Ratings Count</title>
+  <!-- Link to Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+  <!-- Link to Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    /* Your custom styles here */
+  </style>
+</head>
+<body>
+  <div class="container mx-auto">
+    <style>
+  .border-black {
+    border: 2px solid black;
+    padding: 10px;
+  }
+</style>
+
+<h1 class="text-center text-4xl font-bold my-8 border-black">Bookmyshow Movies Live Ratings Search</h1>
+    <div class="flex items-center my-4">
+      <input type="text" id="searchInput" class="form-control w-3/4 mr-2" placeholder="Search for a movie...">
+      <button id="searchBtn" class="btn btn-success">Search</button>
+    </div>
+    <table id="movies" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Movie Title:</th>
+          <th>Movie Rating:</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <script>
+  const moviesTable = document.getElementById('movies');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+ let movies = [
+      {title: 'Roberrt', rating: 7.8},
+      {title: 'Yuvarathnaa', rating: 8.7},
+      {title: 'Pogaru', rating: 7.2},
+      {title: 'kgf1', rating: 8.5},
+      {title: 'kgf2', rating: 9.3},
+      {title: 'love mocktail 2', rating: 9.3},
+	  {title: 'saaho', rating: 7.1},
+      {title: 'kabzaa', rating: 7.3},
+      {title: 'Vaathi', rating: 8.1},
+      {title: 'Gurudev Hoysala', rating: 9.3},
+      {title: 'kgfchapter1', rating: 8.5},
+      {title: 'kgfchapter2', rating: 9.3},
+	  {title: 'Thunivu', rating: 8.6},
+      {title: 'Varisu', rating: 8.4},
+      {title: 'Beast', rating: 7.2},
+      {title: 'kgf', rating: 8.5},
+      {title: 'Kirik Party', rating: 9.2},
+      {title: 'Ugramm', rating: 8.3},
+	  {title: 'Lucia', rating: 8.3},
+      {title: 'Baahubali The Beginning', rating: 8.8},
+      {title: 'Baahubali 1', rating: 8.8},
+      {title: 'Baahubali 2 The Conclusion', rating: 9.2},
+      {title: 'Baahubali 2', rating: 9.2},
+      {title: 'Arjun Reddy', rating: 8.9},
+	  {title: 'Rangasthalam', rating: 8.0},
+      {title: 'Ala Vaikunthapurramuloo', rating: 7.0},
+      {title: 'kabali', rating: 7.0},
+      {title: 'Vikram Vedha', rating: 8.5},
+      {title: '96', rating: 8.9},
+      {title: 'Kaala', rating: 7.5},
+	  {title: 'Jallikattu', rating: 7.6},
+      {title: 'Love Mocktail', rating: 8.0},
+      {title: 'Maheshinte Prathikaaram', rating: 8.2},
+      {title: 'Premam', rating: 8.8},
+      {title: 'Ratsasan', rating: 9.2},
+	  {title: 'kranti', rating: 9.1},
+	  {title: 'Premam', rating: 8.8},
+{title: 'Drishyam', rating: 7.7},
+{title: 'Dangal', rating: 8.8},
+{title: 'Gangs of Wasseypur', rating: 8.0},
+{title: 'Zindagi Na Milegi Dobara', rating: 7.8}, 
+{title: 'Ship of Theseus', rating: 8.3},
+{title: 'Talvar', rating: 8.5},
+{title: 'Article 15', rating: 7.7}, 
+{title: 'Premam', rating: 8.8},
+{title: 'Drishyam 2', rating: 8.9},
+{title: 'Kapoor & Sons', rating: 7.8}, 
+{title: 'Special 26', rating: 8.0},
+{title: 'Bhaag Milkha Bhaag', rating: 7.9},
+{title: 'PK', rating: 8.1}, 
+{title: 'Haider', rating: 7.8},
+{title: 'Gully Boy', rating: 7.5},
+{title: 'Raazi', rating: 8.9}, 
+{title: 'Masaan', rating: 7.3},
+{title: 'Neerja', rating: 8.5}, 
+];
+	
+  // Render the movies table
+    function renderMovies(movies) {
+      const tbody = moviesTable.getElementsByTagName('tbody')[0];
+      tbody.innerHTML = '';
+      for (let i = 0; i < movies.length; i++) {
+        const movie = movies[i];
+        const tr = document.createElement('tr');
+        const titleTd = document.createElement('td');
+        titleTd.textContent = movie.title;
+        const ratingTd = document.createElement('td');
+        ratingTd.textContent = movie.rating;
+        tr.appendChild(titleTd);
+        tr.appendChild(ratingTd);
+        tbody.appendChild(tr);
+      }
+    }
+ // Filter the movies based on the search query
+    function filterMovies(query) {
+      return movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+    }
+// Handle the search button click
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value;
+     const filtered = filterMovies(query);
+renderMovies(filtered);
+});
+// Render the initial movies table
+</script>
+<!-- Link to Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+<p align="center">
+  <div align="center">
+    <img
+        src="https://readme-typing-svg.herokuapp.com?font=GlossAndBloom&size=30&duration=4997&color=993300&background=FF673200&center=true&vCenter=true&lines=WELCOME+TO+BMS+MOVIES+;RATING+COUNT+SEARCH+;I+HAVE+TAKEN+RATINGS+FOR+OVER+50+MOVIES+;FOR+PRACTICE+PURPOSES+;RATINGS+WILL+INCREASE+;TIME+TO+TIME"
+            alt="Typing SVG"
+        />
+    </a>
+</p>
+</div>
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+<img src="https://imgtr.ee/images/2023/05/05/aQ05n.png" alt="Image description" width="700" height="300">
+</body>
+</html>
